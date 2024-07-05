@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowNet: {{show.name}}</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hero-section {
+      background-image: url('{{show.video_thumbnail.url}}'); /* Update with your image path */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      color: white;
+      position: relative;
+    }
+    .hero-section::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .hero-subtitle {
+      font-size: 1.5rem;
+    }
+    .btn-subscribe {
+      margin-top: 20px;
+    }
+    .language-buttons .btn {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-section d-flex align-items-center">
+    <div class="container hero-content">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{ show.video_thumbnail.url }}" alt="{{show.name}}" class="mb-3"> <!-- Update with your logo path -->
+          <h1 class="hero-title">{{show.name}}</h1>
+          <p class="hero-subtitle text-info">New Added</p>
+          
+          <p>{{show.description}}</p>
+          <div class="d-flex flex-wrap language-buttons">
+           
+          </div>
+          <a href="{% url 'stream_video' pk=show.id %}"><button class="btn btn-primary btn-subscribe">Wach Now</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

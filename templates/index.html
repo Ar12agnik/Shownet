@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Website</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+    }
+    .card {
+      background-color: #1c1c1c;
+      border: none;
+    }
+    .card img {
+      border-radius: 10px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+    .category {
+      margin-bottom: 40px;
+    }
+    /* Custom styles for navigation and footer */
+    .navbar {
+      background-color: #333;
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: white;
+    }
+    .footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">ShowNet</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <!-- Add your navigation links here -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% if grouped_shows %}
+  {% for category, shows in grouped_shows.items %}
+  <div class="container mt-5">
+    <!-- Latest Releases -->
+    <div class="category">
+      <h2 class="section-title">{{ category }}</h2>
+      <div class="row">
+        {% for show in shows %}
+        <div class="col-md-3 mb-3">
+          <div class="card">
+            <a href="video_description/{{show.id}}"><img src="{{ show.video_thumbnail.url }}" class="card-img-top" alt="..."></a>
+          </div>
+          <h3>{{ show.name }}</h3>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 ShowNet Website. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

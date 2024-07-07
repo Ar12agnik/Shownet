@@ -1,5 +1,3 @@
-Sure, here is the README.md content as plain text:
-
 ---
 
 # Netflix Clone using Django
